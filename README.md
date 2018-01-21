@@ -1,5 +1,5 @@
 # Conky Theme
-![personal theme](https://raw.github.com/Martikos/conkyrc/master/conky.jpg)
+![personal theme](https://raw.github.com/feilongfl/conkyrc/master/conky.jpg)
 
 ## Installation (Linux)
 1. install conky
