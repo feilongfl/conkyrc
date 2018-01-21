@@ -1,5 +1,4 @@
-background 1
-
+#background yes
 
 # Locale, fonts and font sizes.
 use_xft yes
@@ -12,13 +11,19 @@ total_run_times 0
 double_buffer yes
 no_buffers yes
 net_avg_samples 2
-text_buffer_size 1024
+text_buffer_size 2048
 
 # Execute it in its own window
-own_window yes 
-own_window_transparent yes
-own_window_type override
+own_window yes
+own_window_transparent true
+#own_window_type override
+#own_window_type panel
+own_window_type dock
+#own_window_type conky
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+own_window_argb_visual yes
+own_window_argb_value 255
 
 # Borders, margins.
 draw_borders no
@@ -28,7 +33,8 @@ border_margin 1
 #own_window_colour 393834
 
 # Font colors
-default_color B7B2AD
+default_color 0F0F0F
+#default_color B7B2AD
 #default_color EFEEED
 
 # Text shadows
@@ -38,27 +44,31 @@ draw_shades no
 color0 DD3A21
 
 # Minimum dimensions
-minimum_size 1440 0
+minimum_size 700 100
+#maximum_width 700
 
 # Conky positioning.
 alignment top_left
-gap_x 0
-gap_y 0
+gap_x -20
+gap_y 50
 
 TEXT
 ${voffset 20}
-#${goto 700}${color EAEAEA}${font GE Inspira:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color FFA300}${font GE Inspira:pixelsize=42}${time %d} ${voffset -15}${color EAEAEA}${font GE Inspira:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${font GE Inspira:pixelsize=58}${offset -148}${time %A}${font}
-${goto 150}${color EAEAEA}${font Ubuntu:pixelsize=100}${time %H:%M}${font}${voffset -84}${offset 10}${color FFA300}${font Conviction:pixelsize=42}${time %d} ${voffset -15}${color EAEAEA}${font Conviction:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${font Conviction:pixelsize=58}${offset -100}${time %A}${font}
-${goto 135}${voffset 20}${offset 15}${font Ubuntu:pixelsize=12}${color FFA300}HD ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 9}$color$mem / $memmax${offset 30}${color FFA300}CPU ${offset 9}$color${cpu cpu0}%
+#${goto 700}${color 101010}${font GE Inspira:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color 005CFF}${font GE Inspira:pixelsize=42}${time %d} ${voffset -15}${color 101010}${font GE Inspira:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${font GE Inspira:pixelsize=58}${offset -148}${time %A}${font}
+${goto 150}${color 101010}${font Ubuntu:pixelsize=100}${time %H:%M}${font}${voffset -84}${offset 10}${color 005CFF}${font Conviction:pixelsize=42}${time %d} ${voffset -15}${color 101010}${font Conviction:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${font Conviction:pixelsize=58}${offset -100}${time %A}${font}
+${goto 150}${voffset 0}${color 005CFF}Load  ${offset 5}$color$loadavg${offset 40}${color 005CFF}Temp $color${offset 9}${acpitemp} °C
+${goto 135}${voffset 0}${offset 15}${font Ubuntu:pixelsize=12}${color 005CFF}HD ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color 005CFF}RAM ${offset 9}$color$mem / $memmax${offset 30}${color 005CFF}CPU ${offset 9}$color${cpubar 4,100 cpu0}${offset 9}${cpu cpu0}%
+${goto 135}${voffset 0}${offset 15}${font Ubuntu:pixelsize=12}${color 005CFF}IP  ${offset 5}$color ${if_existing /proc/net/route wlp7s0}${addr wlp7s0}${else}Network disconnected${endif}${offset 15}${color 005CFF}Total ${offset 5}$color${color 3454B8}Up$color ${totalup wlp7s0} ${color 3454B8}Down$color ${totaldown wlp7s0} ${offset 15}${color 005CFF}Speed ${offset 5}$color ${color 3454B8}Up$color ${upspeed wlp7s0} ${color 3454B8}Down$color ${downspeed wlp7s0}
+${goto 135}${voffset 0}${offset 15}${font Ubuntu:pixelsize=12}${color 005CFF}IP  ${offset 5}$color ${if_existing /proc/net/route enp8s0}${addr enp8s0}${else}Network disconnected${endif}${offset 15}${color 005CFF}Total ${offset 5}$color${color 3454B8}Up$color ${totalup enp8s0} ${color 3454B8}Down$color ${totaldown enp8s0} ${offset 15}${color 005CFF}Speed ${offset 5}$color ${color 3454B8}Up$color ${upspeed enp8s0} ${color 3454B8}Down$color ${downspeed enp8s0}
+${goto 150}${voffset 0}${color 005CFF}${offset 10}Pid${offset 40}CPU${offset 35}Mem${offset 40}Name${offset 86}Uptime  $color$uptime
+${goto 150}${voffset 0}${top pid 1}${tab 40}${top cpu 1}%${tab 20}${top mem 1}%${tab 20}${top name 1}
+${goto 150}${voffset 0}${top pid 2}${tab 40}${top cpu 2}%${tab 20}${top mem 2}%${tab 20}${top name 2}
+${goto 150}${voffset 0}${top pid 3}${tab 40}${top cpu 3}%${tab 20}${top mem 3}%${tab 20}${top name 3}
+${goto 460}${voffset -40}${color 005CFF}Kernel$color  $kernel
+${goto 440}${voffset 0}${color 005CFF}HostName$color  $nodename
+${goto 475}${voffset 0}${color 005CFF}CPU$color  ${freq dyn} MHz
+#${goto 460}${voffset 0}${color 005CFF}DrCom$color  ${execi 30 /usr/bin/drcom-money.fish} 
+${goto 150}${voffset -15}${if_existing /proc/net/route enp8s0}${downspeedgraph enp8s0 25,120}${offset 30}${upspeedgraph enp8s0 25,120}${else}${downspeedgraph wlp7s0 25,120}${offset 30}${upspeedgraph wlp7s0 25,120}${endif}
 ${voffset 900}
 
-
-
-
-
-
-
-
-
-
-
+#${goto 135}${voffset 0}${offset 15}${font Ubuntu:pixelsize=12}${color 005CFF}IP  ${offset 5}$color ${if_existing /proc/net/route wlp7s0}${addr wlp7s0}${else}${if_existing /proc/net/route enp8s0}${addr enp8s0}${else}Network disconnected${endif}${endif}${offset 15}${color 005CFF}Total ${offset 5}$color${if_existing /proc/net/route wlp7s0}${color 3454B8}Up$color ${totalup wlp7s0} ${color 3454B8}Down$color ${totaldown wlp7s0} ${else}${color 3454B8}Up$color ${totalup enp8s0} ${color 3454B8}Down $color${totaldown enp8s0} ${endif}${offset 15}${color 005CFF}Speed ${offset 5}$color${if_existing /proc/net/route wlp7s0} ${color 3454B8}Up$color ${upspeed wlp7s0} ${color 3454B8}Down$color ${downspeed wlp7s0} ${else}${color 3454B8} Up$color ${upspeed enp8s0} ${color 3454B8}Down$color ${downspeed enp8s0} ${endif}
