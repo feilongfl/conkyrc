@@ -1,5 +1,6 @@
-sudo apt-get install conky
-git clone git@github.com:Martikos/conkyrc.git
+#!/usr/bin/bash
+sudo apt install conky
+#sudo pacman -S conky
+git clone https://github.com/feilongfl/conkyrc.git
 ln -s ./conkyrc/conkyrc ~/.conkyrc
-sudo chmod +x startup_script.sh
-sudo mv startup_script.sh /home/
+cp ./conky.desktop ~/.config/autostart/conky.desktop

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=conky
+Exec=/usr/bin/conky -d
+Comment=a desktop widget
+X-GNOME-Autostart-Delay=5
+X-GNOME-Autostart-enabled=true
